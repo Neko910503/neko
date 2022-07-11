@@ -1,0 +1,527 @@
+ ****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+  Copyright (C) 2010 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: d:\project\hsipce\hw1\hspice.sp                                   
+  Command line options: -i d:\project\hsipce\hw1\hspice.sp -o d:\project\hsipce\hw1\hspice.lis
+  lic:  
+  lic: FLEXlm: v10.8 
+  lic: USER:   askev                HOSTNAME: NEKO 
+  lic: HOSTID: "50ebf6939771 a0e70baeb177 a0e70baeb178 a2e70baeb177" PID:      3
+ 2
+  lic: Using FLEXlm license file: 
+  lic: 27000@localhost 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 31-dec-2028/2008.120 
+  lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost 
+  lic:   
+ Init: read install configuration file: C:\synopsys\Hspice_E-2010.12\meta.cfg
+1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+ ******  
+ ***hw1***
+
+  ******  circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 x1.                             nonoverlapping     1.00 
+        2 x1.x4.                          nor                1.00 
+        3 x1.x5.                          inv                1.00 
+        4 x1.x6.                          buffer             1.00 
+        5 x1.x7.                          buffer             1.00 
+        6 x1.x8.                          inv                1.00 
+        7 x1.x9.                          nor                1.00 
+        8 x1.x10.                         buffer             1.00 
+        9 x1.x11.                         buffer             1.00 
+       10 x1.x12.                         inv                1.00 
+       11 x1.x6.x2.                       inv                1.00 
+       12 x1.x6.x3.                       inv                1.00 
+       13 x1.x7.x2.                       inv                1.00 
+       14 x1.x7.x3.                       inv                1.00 
+       15 x1.x10.x2.                      inv                1.00 
+       16 x1.x10.x3.                      inv                1.00 
+       17 x1.x11.x2.                      inv                1.00 
+       18 x1.x11.x3.                      inv                1.00 
+  **warning** (d:\project\hsipce\hw1\hspice.sp:42) Both nodes of element vgnd are connected together; Line ignored.
+  **info** (d:\project\hsipce\hw1\hspice.sp:44) DC voltage reset to initial transient source value              in source        0:vin                 new dc=  0.1800D+01
+ ***************************************************************************
+ ***        model parameters  model name:   0:p_18.1   model type:pmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=        3.2            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          1         
+       capMod=          2               xpart=          1         
+       mobMod=          3              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=   4.2e-009 meter   
+           xj=     1e-007 meter       binflag=          0         
+         lmin=   1.8e-007 meter          lmax=     5e-005 meter   
+         wmin=   2.5e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint=-1.041e-008 meter          wint=-1.525e-007 meter   
+        lmult=          1               wmult=          1         
+           ll= 6.635e-015                 lln=          1         
+           lw=-2.873e-016                 lwn=          1         
+          lwl=          0                  wl=          0         
+          wln=          1                  ww= 1.236e-014         
+          wwn=          1                 wwl=          0         
+          dwg=-1.251e-007 m/V             dwb=-1.039e-007 m/V^1/2 
+           xl=    -2e-009                  xw=          0         
+           a0=       1.35                 ags=     0.3818 V^-1    
+           b0=-3.088e-007 meter            b1=          0 meter   
+         keta=    0.01044 V^-1           voff=    -0.1073 V       
+        ngate=     1e+023 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=    -0.4555 V               nch= 6.231e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx=  2.53e-007 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=     0.5704 V^1/2            k2=   0.006973         
+           k3=     -2.833                 k3b=      1.326 V^-1    
+           w0=-1.943e-007 meter          dvt0=     0.4885         
+         dvt1=    0.07578                dvt2=     0.1187 V^-1    
+        dvt0w=    -0.1261 meter^-1      dvt1w=      24790 meter^-1
+        dvt2w=     0.6915 V^-1           dsub=     1.9191         
+         eta0=      1.071                etab=    -0.9291 V^-1    
+           u0=      124.5 cm^2/V/sec         ua=  1.54e-009 m/V     
+           ub= 2.646e-019 (m/V)^2          uc=   -0.09587 V^-1    
+         vsat=      53400 m/sec            a1=          0 v^-1    
+           a2=          1               delta=       0.01 V       
+         rdsw=      792.1 ohm-um         prwg=          0 V^-1    
+         prwb=          0 V^-1/2           wr=          1         
+         pclm=      2.653             pdiblc1=          0         
+      pdiblc2=     5e-006             pdiblcb=          0 V^-1    
+       pscbe1= 4.866e+008 V/m          pscbe2=   2.8e-007 V/m     
+        drout=      1.457                pvag=      1.262         
+      nfactor=      1.535                cdsc=  0.0007578 f/m^2   
+        cdscb=     0.0001 f/V/m^2       cdscd=-2.883e-005 f/V/m^2 
+          cit=  -0.001067 f/m^2        alpha0=          0 m/V     
+        beta0=         30 V               dlc=  7.01e-008 meter   
+          dwc=          0 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso= 2.054e-010 f/m     
+         cgdo= 2.054e-010 f/m            cgbo=          0 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf= 1.533e-010 f/m     
+         acde=          1 m/V            moin=         15 V^1/2   
+         toxm=   4.2e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=          0 1/V     
+         ijth=          0 A              noff=          1         
+       voffcv=          0                 tcj=          0 1/K     
+        tcjsw=          0 1/K          tcjswg=          0 1/K     
+          tpb=          0 V/K           tpbsw=          0 V/K     
+       tpbswg=          0 V/K             llc= -1.31e-014         
+          lwc=          0                lwlc=          0         
+          wlc=          0                 wwc=          0         
+         wwlc=          0                tnom=     298.15 K       
+          kt1=    -0.2294 V              kt1l=-8.204e-009         
+          kt2=  -0.009487                 ute=    -0.4484         
+          ua1= 4.571e-009 m/V             ub1=-6.026e-018 (m/V)^2 
+          uc1=    -0.0985 m/V^2            at=      12030 m/s     
+          prt=          0         
+          using Berkeley noise model       noiMod=          1         
+         noia=     1e+020                noib=      50000         
+         noic=  -1.4e-012                  em=   4.2e+007         
+           ef=          1                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Hspice diodes            using ACM 
+          acm=         3                 hdif=  2.6e-007 meter    
+         ldif=    8e-008 meter             js=    3e-006 amp/m^2  
+          jsw= 4.22e-011 amp/m            xti=         3          
+            n=         1                   cj=   0.00124 f/m^2    
+           mj=     0.395                   pb=     0.762 V        
+         cjsw= 1.74e-010 f/m             mjsw=     0.324          
+          php=     0.665 V               pbsw (not used)           
+       cjgate= 1.74e-010 f/m            cjswg (not used)           
+        mjswg (not used)                 pbswg (not used)           
+          la0=     -0.281                lags=    0.04454         
+        lketa=     -0.012               lvoff= -0.0009871         
+        lvth0=     0.0044                lnlx=-1.584e-008         
+          lua=-8.253e-011            lpdiblc2=   0.003012         
+          wa0=   -0.04807                wags=   -0.04277         
+        wvoff=  -0.009816               wvth0=    -0.0148         
+          wua=  2.63e-009               wvsat=     -14200         
+        wrdsw=      10.07                wute=    -0.2682         
+          wat=      -6405                wprt=      226.6         
+          pa0=    0.08661                pags=   -0.04076         
+        pvoff=-9.833e-005               pvth0=     0.0032         
+          pua= 5.855e-011               pvsat=       -434         
+ ***************************************************************************
+ ***        model parameters  model name:   0:n_18.1   model type:nmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=        3.2            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          1         
+       capMod=          2               xpart=          1         
+       mobMod=          1              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=   4.2e-009 meter   
+           xj=   1.6e-007 meter       binflag=          0         
+         lmin=   1.8e-007 meter          lmax=     5e-005 meter   
+         wmin=   2.5e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint= 1.587e-008 meter          wint= 1.022e-008 meter   
+        lmult=          1               wmult=          1         
+           ll=-1.062e-015                 lln=          1         
+           lw= 2.996e-015                 lwn=          1         
+          lwl=          0                  wl=          0         
+          wln=          1                  ww= 7.262e-016         
+          wwn=          1                 wwl=          0         
+          dwg=-3.396e-009 m/V             dwb= 1.346e-009 m/V^1/2 
+           xl= -1.05e-008                  xw=          0         
+           a0=       1.93                 ags=     0.5072 V^-1    
+           b0= 1.486e-006 meter            b1= 9.064e-006 meter   
+         keta=    0.01752 V^-1           voff=    -0.1088 V       
+        ngate=     1e+023 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=     0.3075 V               nch=3.7446e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx= 4.279e-007 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=     0.4578 V^1/2            k2=   -0.02638         
+           k3=     -10.88                 k3b=     0.2379 V^-1    
+           w0=-8.813e-008 meter          dvt0=     0.4042         
+         dvt1=     0.3237                dvt2=    -0.8602 V^-1    
+        dvt0w=      0.383 meter^-1      dvt1w=     600000 meter^-1
+        dvt2w=     -0.025 V^-1           dsub=   0.001592         
+         eta0=   0.001004                etab=  -0.001459 V^-1    
+           u0=      324.1 cm^2/V/sec         ua=-9.201e-010 m/V     
+           ub= 1.907e-018 (m/V)^2          uc= 4.355e-011 V^-1    
+         vsat=      72580 m/sec            a1=          0 v^-1    
+           a2=          1               delta=       0.01 V       
+         rdsw=      4.905 ohm-um         prwg=          0 V^-1    
+         prwb=          0 V^-1/2           wr=          1         
+         pclm=      1.091             pdiblc1=   0.003061         
+      pdiblc2=     1e-006             pdiblcb=          0 V^-1    
+       pscbe1= 4.866e+008 V/m          pscbe2=   2.8e-007 V/m     
+        drout=   0.001592                pvag=    -0.2958         
+      nfactor=      1.038                cdsc=   0.002275 f/m^2   
+        cdscb=  0.0008241 f/V/m^2       cdscd=    -0.0005 f/V/m^2 
+          cit=  -0.001511 f/m^2        alpha0=          0 m/V     
+        beta0=         30 V               dlc=     4e-008 meter   
+          dwc=          0 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso=  2.35e-010 f/m     
+         cgdo=  2.35e-010 f/m            cgbo=          0 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf= 1.533e-010 f/m     
+         acde=          1 m/V            moin=         15 V^1/2   
+         toxm=   4.2e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=          0 1/V     
+         ijth=          0 A              noff=          1         
+       voffcv=          0                 tcj=          0 1/K     
+        tcjsw=          0 1/K          tcjswg=          0 1/K     
+          tpb=          0 V/K           tpbsw=          0 V/K     
+       tpbswg=          0 V/K             llc= -6.64e-015         
+          lwc=          0                lwlc=          0         
+          wlc=          0                 wwc=          0         
+         wwlc=          0                tnom=     298.15 K       
+          kt1=    -0.2255 V              kt1l=-4.275e-009         
+          kt2=   -0.02527                 ute=     -1.186         
+          ua1= 2.253e-009 m/V             ub1=-2.673e-018 (m/V)^2 
+          uc1=-3.832e-011 m/V^2            at=      14490 m/s     
+          prt=     -10.18         
+          using Berkeley noise model       noiMod=          1         
+         noia=     1e+020                noib=      50000         
+         noic=  -1.4e-012                  em=   4.2e+007         
+           ef=          1                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Hspice diodes            using ACM 
+          acm=         3                 hdif=  2.6e-007 meter    
+         ldif=    8e-008 meter             js=    1e-006 amp/m^2  
+          jsw=    7e-011 amp/m            xti=         3          
+            n=         1                   cj=   0.00103 f/m^2    
+           mj=     0.443                   pb=     0.823 V        
+         cjsw= 1.34e-010 f/m             mjsw=      0.33          
+          php=      0.88 V               pbsw (not used)           
+       cjgate=    5e-010 f/m            cjswg (not used)           
+        mjswg (not used)                 pbswg (not used)           
+          la0=    -0.4667                lags=     0.3028         
+        lketa=   -0.01942               lvoff=  -0.004208         
+        lvth0=     -0.001                lnlx=-2.854e-008         
+        leta0=   0.001574            lpdiblc2=  -0.004752         
+          wa0=   -0.04731                wags=   0.004242         
+        wvoff= -0.0004078               wvth0=    0.06027         
+          wu0=       0.54                 wua= -1.88e-011         
+        wvsat=       5066                wute=    0.06373         
+          wat=       7067                 pa0=   -0.02649         
+        pvoff= -0.0003788                 pw0=   1.3e-009         
+          pub=   3.8e-020         
+ 
+
+ 
+      
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2         
+  Opening plot unit= 79
+ file=d:\project\hsipce\hw1\hspice.pa0                                         
+
+1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+ ******  
+ ***hw1***
+
+  ******  operating point information tnom=  25.000 temp=  25.000 *****
+ ***** operating point status is all       simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:vdd     =   1.8000   0:vin     =   1.8000   0:vn      =   1.8000 
+ + 0:vp      =   1.8000   1:n1      =   2.0503n  1:n2      =   1.8000 
+ + 1:n3      =   1.8000   1:n4      = 428.6378n  1:n5      =   1.8000 
+ + 1:n6      =   1.8000   1:n7      = 428.6378n  2:n1      =   1.7598 
+ + 4:n2      = 428.6378n  4:n4      =   0.       5:n2      = 428.6378n
+ + 5:n4      =   0.       7:n1      =   1.8000   8:n2      = 428.6383n
+ + 8:n4      =   0.       9:n2      = 428.6378n  9:n4      =   0.     
+
+
+ ****  voltage sources
+
+ subckt                          
+ element   0:vdd       0:vin     
+  volts       1.8000      1.8000 
+  current    -2.5456n     0.     
+  power       4.5821n     0.     
+
+     total voltage source power dissipation=    4.5821n       watts
+
+
+
+ **** resistors
+
+ subckt    x1.x6       x1.x7       x1.x10      x1.x11    
+ element   4:r1        5:r1        8:r1        9:r1      
+  r value     1.0000k     1.0000k     1.0000k     1.0000k
+  v drop      0.          0.          0.          0.     
+  current     0.          0.          0.          0.     
+  power       0.          0.          0.          0.     
+
+
+
+ **** mosfets
+
+
+ subckt    x1.x4       x1.x4       x1.x4       x1.x4       x1.x5     
+ element   2:mp1       2:mp2       2:mn3       2:mn4       3:mp1     
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:p_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Linear
+  id         -6.1236p    -4.4845p     4.0223p     4.0223p    -4.2649p
+  ibs       7.486e-28     7.0436a  -1.199e-27  -1.199e-27   4.002e-28
+  ibd         7.0436a   315.3024a  -2.927e-25  -2.927e-25   4.438e-25
+  vgs         0.         40.2104m     1.8000      1.8000     -1.8000 
+  vds       -40.2104m    -1.7598      2.0503n     2.0503n  -307.5513p
+  vbs         0.         40.2104m     0.          0.          0.     
+  vth      -537.8657m  -537.7265m   521.0897m   521.0897m  -512.0286m
+  vdsat     -56.8066m   -56.7868m   503.6529m   503.6529m  -913.4407m
+  vod       537.8657m   577.9369m     1.2789      1.2789     -1.2880 
+  beta        1.8285m     1.8288m     1.5935m     1.5935m    16.6359m
+  gam eff   557.0847m   556.7942m   507.4459m   507.4459m   557.0847m
+  gm        157.3214p   117.0667p     1.9621p     1.9621p     1.6982p
+  gds        79.5702p     1.6451p     1.9779m     1.9779m    13.8922m
+  gmb        58.3738p    42.1740p   537.8323f   537.8323f   901.2902f
+  cdtot       4.1735f     3.0756f     3.2030f     3.2030f    95.6659f
+  cgtot       3.5059f     3.5059f     2.1591f     2.1591f    71.7155f
+  cstot       4.2355f     4.1735f     3.0196f     3.0196f    92.5929f
+  cbtot       7.6104f     6.4505f     2.9281f     2.9281f    78.4683f
+  cgs         1.0761f     1.0761f     1.0217f     1.0217f    36.5317f
+  cgd         1.0761f     1.0761f     1.0229f     1.0229f    35.0218f
+
+
+
+ subckt    x1.x5       x1.x8       x1.x8       x1.x9       x1.x9     
+ element   3:mn1       6:mp1       6:mn1       7:mp1       7:mp2     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Linear
+  id        664.7689f  -410.5848p   414.1874p   -31.1413p   -31.1413p
+  ibs      -7.348e-28   3.871e-26  -1.235e-25   3.782e-27   4.420e-24
+  ibd      -257.9760a     2.5996f  -6.131e-23   4.412e-24   8.828e-24
+  vgs         2.0503n     0.          1.8000     -1.8000     -1.8000 
+  vds         1.8000     -1.8000    428.6378n   -25.2097n   -25.2097n
+  vbs         0.          0.          0.          0.         25.2097n
+  vth       464.8188m  -500.0632m   496.4723m  -538.1311m  -538.1311m
+  vdsat      45.7157m   -56.6790m   728.6246m  -945.8921m  -945.8921m
+  vod      -464.8188m   500.0632m     1.3035     -1.2619     -1.2619 
+  beta      921.3594u    21.3447m   758.2727u     1.4190m     1.4190m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   557.0847m
+  gm         23.8575p    10.6348n   207.2360p    13.7194p    13.7194p
+  gds       340.7612f   152.8859p   970.1872u     1.2374m     1.2374m
+  gmb         4.6774p     3.8237n    72.0913p     7.4716p     7.4716p
+  cdtot       1.2443f    31.6617f     4.7078f     9.1351f     9.1351f
+  cgtot       1.4312f    37.2093f     3.3093f     6.7233f     6.7233f
+  cstot       1.6973f    43.4291f     4.2283f     8.8362f     8.8362f
+  cbtot       2.8196f    66.3859f     3.2075f     7.6802f     7.6802f
+  cgs       388.3203a    11.4789f     1.6020f     3.4117f     3.4117f
+  cgd       388.3000a    11.4784f     1.5856f     3.2824f     3.2824f
+
+
+
+ subckt    x1.x9       x1.x9       x1.x12      x1.x12      x1.x6.x2  
+ element   7:mn3       7:mn4      10:mp1      10:mn1      11:mp1     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region        Cutoff      Cutoff      Cutoff      Linear      Cutoff
+  id         11.9705p    11.9705p  -410.5848p   414.1874p  -410.5848p
+  ibs      -4.105e-27  -4.105e-27   3.871e-26  -1.235e-25   3.871e-26
+  ibd      -257.9760a  -257.9760a     2.5996f  -6.131e-23     2.5996f
+  vgs       428.6378n   428.6378n  -307.3026p     1.8000   -307.5513p
+  vds         1.8000      1.8000     -1.8000    428.6378n    -1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       457.2301m   457.2301m  -500.0632m   496.4723m  -500.0632m
+  vdsat      53.7463m    53.7463m   -56.6790m   728.6246m   -56.6790m
+  vod      -457.2297m  -457.2297m   500.0632m     1.3035    500.0632m
+  beta        2.0133m     2.0133m    21.3447m   758.2727u    21.3447m
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm        394.1572p   394.1572p    10.6348n   207.2360p    10.6348n
+  gds         9.3200p     9.3200p   152.8859p   970.1872u   152.8859p
+  gmb        55.2282p    55.2282p     3.8237n    72.0913p     3.8237n
+  cdtot       1.2443f     1.2443f    31.6617f     4.7078f    31.6617f
+  cgtot       1.1392f     1.1392f    37.2093f     3.3093f    37.2093f
+  cstot       1.6973f     1.6973f    43.4291f     4.2283f    43.4291f
+  cbtot       2.5276f     2.5276f    66.3859f     3.2075f    66.3859f
+  cgs       388.3114a   388.3114a    11.4789f     1.6020f    11.4789f
+  cgd       388.3000a   388.3000a    11.4784f     1.5856f    11.4784f
+
+
+
+ subckt    x1.x6.x2    x1.x6.x3    x1.x6.x3    x1.x7.x2    x1.x7.x2  
+ element  11:mn1      12:mp1      12:mn1      13:mp1      13:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region        Linear      Linear      Cutoff      Cutoff      Linear
+  id        414.1874p    -4.2614p   664.7791f  -410.5848p   414.1874p
+  ibs      -1.235e-25   4.002e-28  -7.348e-28   3.871e-26  -1.235e-25
+  ibd      -6.131e-23   4.434e-25  -257.9760a     2.5996f  -6.131e-23
+  vgs         1.8000     -1.8000    428.6378n  -307.3026p     1.8000 
+  vds       428.6378n  -307.3026p     1.8000     -1.8000    428.6378n
+  vbs         0.          0.          0.          0.          0.     
+  vth       496.4723m  -512.0286m   464.8188m  -500.0632m   496.4723m
+  vdsat     728.6246m  -913.4404m    45.7157m   -56.6790m   728.6246m
+  vod         1.3035     -1.2880   -464.8184m   500.0632m     1.3035 
+  beta      758.2727u    16.6359m   921.3594u    21.3447m   758.2727u
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        207.2360p     1.6969p    23.8578p    10.6348n   207.2360p
+  gds       970.1872u    13.8922m   340.7665f   152.8859p   970.1872u
+  gmb        72.0913p   900.5602f     4.6775p     3.8237n    72.0913p
+  cdtot       4.7078f    95.6659f     1.2443f    31.6617f     4.7078f
+  cgtot       3.3093f    71.7155f     1.4312f    37.2093f     3.3093f
+  cstot       4.2283f    92.5929f     1.6973f    43.4291f     4.2283f
+  cbtot       3.2075f    78.4683f     2.8196f    66.3859f     3.2075f
+  cgs         1.6020f    36.5317f   388.3203a    11.4789f     1.6020f
+  cgd         1.5856f    35.0218f   388.3000a    11.4784f     1.5856f
+
+
+
+ subckt    x1.x7.x3    x1.x7.x3    x1.x10.x2   x1.x10.x2   x1.x10.x3 
+ element  14:mp1      14:mn1      15:mp1      15:mn1      16:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region        Linear      Cutoff      Cutoff      Linear      Linear
+  id         -4.2638p   664.7791f  -410.5853p   414.1879p    -4.2632p
+  ibs       4.005e-28  -7.348e-28   3.871e-26  -1.235e-25   4.002e-28
+  ibd       4.437e-25  -257.9760a     2.5996f  -6.131e-23   4.436e-25
+  vgs        -1.8000    428.6378n   -50.4194n     1.8000     -1.8000 
+  vds      -307.4763p     1.8000     -1.8000    428.6383n  -307.4292p
+  vbs         0.          0.          0.          0.          0.     
+  vth      -512.0286m   464.8188m  -500.0632m   496.4723m  -512.0286m
+  vdsat    -913.4404m    45.7157m   -56.6790m   728.6246m  -913.4404m
+  vod        -1.2880   -464.8184m   500.0631m     1.3035     -1.2880 
+  beta       16.6359m   921.3594u    21.3447m   758.2727u    16.6359m
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm          1.6978p    23.8578p    10.6349n   207.2362p     1.6976p
+  gds        13.8922m   340.7665f   152.8861p   970.1872u    13.8922m
+  gmb       901.0694f     4.6775p     3.8237n    72.0914p   900.9318f
+  cdtot      95.6659f     1.2443f    31.6617f     4.7078f    95.6659f
+  cgtot      71.7155f     1.4312f    37.2093f     3.3093f    71.7155f
+  cstot      92.5929f     1.6973f    43.4291f     4.2283f    92.5929f
+  cbtot      78.4683f     2.8196f    66.3859f     3.2075f    78.4683f
+  cgs        36.5317f   388.3203a    11.4789f     1.6020f    36.5317f
+  cgd        35.0218f   388.3000a    11.4784f     1.5856f    35.0218f
+
+
+
+ subckt    x1.x10.x3   x1.x11.x2   x1.x11.x2   x1.x11.x3   x1.x11.x3 
+ element  16:mn1      17:mp1      17:mn1      18:mp1      18:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Cutoff
+  id        664.7791f  -410.5848p   414.1874p    -4.2634p   664.7791f
+  ibs      -7.348e-28   3.871e-26  -1.235e-25   4.002e-28  -7.348e-28
+  ibd      -257.9760a     2.5996f  -6.131e-23   4.436e-25  -257.9760a
+  vgs       428.6383n  -307.4292p     1.8000     -1.8000    428.6378n
+  vds         1.8000     -1.8000    428.6378n  -307.4443p     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       464.8188m  -500.0632m   496.4723m  -512.0286m   464.8188m
+  vdsat      45.7157m   -56.6790m   728.6246m  -913.4404m    45.7157m
+  vod      -464.8184m   500.0632m     1.3035     -1.2880   -464.8184m
+  beta      921.3594u    21.3447m   758.2727u    16.6359m   921.3594u
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm         23.8578p    10.6348n   207.2360p     1.6976p    23.8578p
+  gds       340.7665f   152.8859p   970.1872u    13.8922m   340.7665f
+  gmb         4.6775p     3.8237n    72.0913p   900.9755f     4.6775p
+  cdtot       1.2443f    31.6617f     4.7078f    95.6659f     1.2443f
+  cgtot       1.4312f    37.2093f     3.3093f    71.7155f     1.4312f
+  cstot       1.6973f    43.4291f     4.2283f    92.5929f     1.6973f
+  cbtot       2.8196f    66.3859f     3.2075f    78.4683f     2.8196f
+  cgs       388.3203a    11.4789f     1.6020f    36.5317f   388.3203a
+  cgd       388.3000a    11.4784f     1.5856f    35.0218f   388.3000a
+
+
+
+  **warning** PSF format is not supported on this platform.
+
+          ***** job concluded
+1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+ ******  
+ ***hw1***
+
+  ******  job statistics summary tnom=  25.000 temp=  25.000 *****
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count                  :     1
+  Available CPU Count                         :    20
+  Actual Model Evaluation(Load) Threads Count :     1
+  Actual Solver Threads Count                 :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      82 # elements   =      40
+  # resistors   =       4 # capacitors =       4 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =      30 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.11           1          23
+  transient          0.36     1250001        1713         614 rev=         8
+  readin             0.06
+  errchk             0.02
+  setup              0.06
+  output             0.00
+
+
+           total memory used          386  kbytes
+           total cpu time            0.63 seconds
+           total elapsed time        0.70 seconds
+           job started at     21:44:51 07/11/2022
+           job ended   at     21:44:52 07/11/2022
+
+
+  lic: Release hspice token(s) 
