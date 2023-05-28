@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>九宮格圖片測試</title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    .grid img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>九宮格圖片測試</h1>
+  
+  <div class="grid" id="image-grid">
+    <!-- 這裡將插入圖片 -->
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipPo6lgRCI-3dZYqOeOIoHVdcr6UKZM5B99PLpY?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipOtBbonHfcbGo8BS9YbWe5iRKxEsGfySg_Xqt0v?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipO9DgDjKKHFteDO-MPXGq8fJ7C7-TGq7tlmepLw?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipPL3PqsnTawLQZTeHwHI_R3Droi2vo-Jrbei-nm?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipO8vbiApmKUmT7h185NC76iCLJZom9X1-8BEzDY?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipNB4syOTY76soT7kwrcoWbFc9ph9y8RR57oy0nB?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipNizdxXYu7I5OjQahmq01TxeerTmy8STxVlNuPW?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipOmGeu2etA1vkPrEWGa6kw31dgPIFMYio_SIVUE?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+    "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipMg-g_6zNEyPKdjSmN1Tbi1tx9PQkWy57jemBso?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn"
+  </div>
+  
+  <form id="answer-form">
+    <label for="answer">選擇正確的圖片（從左到右，從上到下）：</label>
+    <select id="answer" name="answer"></select>
+    <button type="submit">提交答案</button>
+  </form>
+  
+  <div id="result"></div>
+  
+  <script>
+    // 定義九宮格的圖片URL
+    var images = [
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipPo6lgRCI-3dZYqOeOIoHVdcr6UKZM5B99PLpY?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipOtBbonHfcbGo8BS9YbWe5iRKxEsGfySg_Xqt0v?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipO9DgDjKKHFteDO-MPXGq8fJ7C7-TGq7tlmepLw?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipPL3PqsnTawLQZTeHwHI_R3Droi2vo-Jrbei-nm?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipO8vbiApmKUmT7h185NC76iCLJZom9X1-8BEzDY?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipNB4syOTY76soT7kwrcoWbFc9ph9y8RR57oy0nB?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipNizdxXYu7I5OjQahmq01TxeerTmy8STxVlNuPW?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipOmGeu2etA1vkPrEWGa6kw31dgPIFMYio_SIVUE?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn",
+      "https://photos.google.com/share/AF1QipO3jwE6MIYWWSG0DwhvYxJswXHZgvJJ5J-6M8NgF_i86aWgpB8afkA5TMI3pysPJA/photo/AF1QipMg-g_6zNEyPKdjSmN1Tbi1tx9PQkWy57jemBso?key=Mkd6bV96MVZIYUpUTXBoaGZMN2gzVE4zSGFYRGRn"
+    ];
+    
+    // 隨機選擇正確答案的圖片
+    var correctImage = images[Math.floor(Math.random() * images.length)];
+    
+    // 隨機選擇其他8個錯誤圖片
+    var wrongImages = images.filter(function(image) {
+      return image !== correctImage;
+    });
+    wrongImages = shuffleArray(wrongImages).slice(0, 8);
+    
+    // 將正確答案和錯誤圖片合併成一個列表
+    var allImages = [correctImage].concat(wrongImages);
+    
+    // 隨機打亂圖片順序
+    allImages = shuffleArray(allImages);
+    
+    // 在九宮格中插入圖片
+    var imageGrid = document.getElementById("image-grid");
+    for (var i = 0; i < allImages.length; i++) {
+      var image = document.createElement("img");
+      image.src = allImages[i];
+      imageGrid.appendChild(image);
+    }
+    
+    // 在答案下拉菜單中插入選項
+   

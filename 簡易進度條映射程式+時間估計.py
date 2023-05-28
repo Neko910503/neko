@@ -18,6 +18,7 @@ def progressbar(progress,total,title):
   second2 = int(seconds %60)
   speed1 = 1/(t4-t3+0.00001)
   speed2 = 1/(t2-t4+0.00001)
+  #print("")
   if(speed1 > speed2):
     speed1 = speed2
   if(t4!=t3):
@@ -50,7 +51,7 @@ def main():
   for i in range(0,number+1):
     t4 = time.time()
     #time.sleep(0.2)
-    time.sleep(random.uniform(0,1.5))
+    time.sleep(random.uniform(0,0.2))
     con.acquire()
     progressbar(i,number,name)
     con.release()
@@ -70,7 +71,7 @@ t1 = time.time()
 t2 = time.time()
 t3 = time.time()
 t4 = time.time()
-number = 10000 #9223372036854775807
+number = 100 #9223372036854775807
 name = "Hello Neko" ; i=0
 con = threading.Condition()
 Thread1 = threading.Thread(target = main)
