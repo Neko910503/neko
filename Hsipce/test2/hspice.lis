@@ -1,0 +1,86 @@
+ ****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+  Copyright (C) 2010 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: d:\project\hsipce\test2\hspice.sp                                 
+  Command line options: -i d:\project\hsipce\test2\hspice.sp -o d:\project\hsipce\test2\hspice.lis
+  lic:  
+  lic: FLEXlm: v10.8 
+  lic: USER:   askev                HOSTNAME: NEKO 
+  lic: HOSTID: "50ebf6939771 a0e70baeb177 a0e70baeb178 a2e70baeb177" PID:      5
+ 4
+  lic: Using FLEXlm license file: 
+  lic: 27000@localhost 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 31-dec-2028/2008.120 
+  lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost 
+  lic:   
+ Init: read install configuration file: C:\synopsys\Hspice_E-2010.12\meta.cfg
+  **warning** (d:\project\hsipce\test2\hspice.sp:28) Parameter name is not defined in .param. Please enter parameter variable with their respective value/expression.
+  **warning** (d:\project\hsipce\test2\hspice.sp:29) Global net name, "gnd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
+
+ **error** model name pm in the element     0:mm2
+ is not defined.
+
+
+ **error** model name pm in the element     0:mm3
+ is not defined.
+
+
+ **error** model name nm in the element     0:mm0
+ is not defined.
+
+
+ **error** model name nm in the element     0:mm1
+ is not defined.
+
+  **warning** PSF format is not supported on this platform.
+
+          ***** job aborted
+1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
+ ******  
+ ************************************************************************
+
+  ******  job statistics summary tnom=  25.000 temp=  25.000 *****
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count                  :     1
+  Available CPU Count                         :    20
+  Actual Model Evaluation(Load) Threads Count :     1
+  Actual Solver Threads Count                 :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =       0 # elements   =      15
+  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =      11
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       4 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1           0
+  readin             0.06
+  errchk             0.00
+  setup              0.00
+  output             0.00
+
+
+           total memory used          288  kbytes
+           total cpu time            0.07 seconds
+           total elapsed time        0.14 seconds
+           job started at     15:12:54 07/16/2022
+           job ended   at     15:12:54 07/16/2022
+
+
+  lic: Release hspice token(s) 

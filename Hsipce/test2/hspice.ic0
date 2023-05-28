@@ -1,0 +1,45 @@
+* "simulator" "HSPICE" 
+* "version" "E-2010.12 32-BIT"
+* "format" "HSP"
+* "rundate" "16:28:59 07/14/2022 "
+* "netlist" "d:\project\hsipce\hw2-analog\hspice.sp "
+* "runtitle" "***hw2-analog***"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ n1 =   0.            
++ n3 =   0.            
++ n4 =   0.            
++ n5 =   0.            
++ n6 =   0.            
++ n7 =   0.            
++ n8 =   0.            
++ vb = 550.0000m       
++ vdd =   0.            
++ vh =   1.2000        
++ vinn = 900.0000m       
++ vinp = 900.0000m       
++ vl = 700.0000m       
++ vramp =   0.            
++ vref =   1.0000        
++ x1.n0 =   0.            
++ x1.n1 =   0.            
++ x1.n2 =   0.            
++ x1.n3 =   0.            
++ x1.n4 =   0.            
++ x2.n0 =   0.            
++ x2.n1 =   0.            
++ x2.n2 =   0.            
++ x2.n3 =   0.            
++ x2.n4 =   0.            
++ x3.n0 =   0.            
++ x3.n1 =-9.574e-27       
++ x3.n2 = 1.838e-24       
++ x3.n3 =-1.065e-27       
++ x3.n4 = 1.838e-24       
++ x4.n1 =   0.            
++ x5.n1 =   0.            
+***   END: Saved Operating Point ***                     

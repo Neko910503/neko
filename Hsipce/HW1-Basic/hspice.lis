@@ -5,13 +5,13 @@
   terms and conditions of the license agreement from Synopsys.
   Use of this program is your acceptance to be bound by the
   license agreement. HSPICE is the trademark of Synopsys, Inc.
-  Input File: d:\project\hsipce\test\hspice.sp                                  
-  Command line options: -i d:\project\hsipce\test\hspice.sp -o d:\project\hsipce\test\hspice.lis
+  Input File: d:\project\hsipce\hw1\hspice.sp                                   
+  Command line options: -i d:\project\hsipce\hw1\hspice.sp -o d:\project\hsipce\hw1\hspice.lis
   lic:  
   lic: FLEXlm: v10.8 
   lic: USER:   askev                HOSTNAME: NEKO 
   lic: HOSTID: "50ebf6939771 a0e70baeb177 a0e70baeb178 a2e70baeb177" PID:      1
- 0
+ 5
   lic: Using FLEXlm license file: 
   lic: 27000@localhost 
   lic: Checkout 1 hspice 
@@ -19,7 +19,6 @@
   lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost 
   lic:   
  Init: read install configuration file: C:\synopsys\Hspice_E-2010.12\meta.cfg
-  **warning** (d:\project\hsipce\test\hspice.sp:7) Global net name, "gnd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
 1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
  ******  
  ***hw1***
@@ -28,9 +27,22 @@
  circuit number to circuit name directory
    number circuitname                     definition         multiplier
         0 main circuit
-        1 x1.                             inv                1.00 
-  **warning** (d:\project\hsipce\test\hspice.sp:15) Both nodes of element vgnd are connected together; Line ignored.
-  **info** (d:\project\hsipce\test\hspice.sp:17) DC voltage reset to initial transient source value              in source        0:vin                 new dc=  0.1800D+01
+        1 x1.                             nonoverlapping     1.00 
+        2 x1.x4.                          nor                1.00 
+        3 x1.x5.                          inv                1.00 
+        4 x1.x6.                          delay              1.00 
+        5 x1.x7.                          buffer             1.00 
+        6 x1.x8.                          inv                1.00 
+        7 x1.x9.                          nor                1.00 
+        8 x1.x10.                         delay              1.00 
+        9 x1.x11.                         buffer             1.00 
+       10 x1.x12.                         inv                1.00 
+       11 x1.x7.x2.                       inv                1.00 
+       12 x1.x7.x3.                       inv                1.00 
+       13 x1.x11.x2.                      inv                1.00 
+       14 x1.x11.x3.                      inv                1.00 
+  **warning** (d:\project\hsipce\hw1\hspice.sp:49) Both nodes of element vgnd are connected together; Line ignored.
+  **info** (d:\project\hsipce\hw1\hspice.sp:51) DC voltage reset to initial transient source value              in source        0:vin                 new dc=  0.1800D+01
  ***************************************************************************
  ***        model parameters  model name:   0:p_18.1   model type:pmos   ***
  ***************************************************************************
@@ -248,12 +260,13 @@
 
  
       
+ **info** set option symb=1 internally to help for convergence.
  *****************************************************************
  ******  option summary
  ******
  runlvl  = 3         bypass  = 2         
   Opening plot unit= 79
- file=d:\project\hsipce\test\hspice.pa0                                        
+ file=d:\project\hsipce\hw1\hspice.pa0                                         
 
 1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
  ******  
@@ -261,51 +274,202 @@
 
   ******  operating point information tnom=  25.000 temp=  25.000 *****
  ***** operating point status is all       simulation time is     0.     
-    node    =voltage      node    =voltage      node    =voltage
+     node    =voltage       node    =voltage       node    =voltage
 
- +0:vdd     =   1.8000  0:vin     =   1.8000  0:vout    =  11.4662n
+ + 0:vdd     =   1.8000   0:vin     =   1.8000   0:vn      =   1.8000 
+ + 0:vp      =   1.8000   1:n1      =   2.0505n  1:n2      =   1.8000 
+ + 1:n3      =   1.8000   1:n4      =  11.4662n  1:n5      =   1.8000 
+ + 1:n6      =   1.8000   1:n7      =  11.4662n  2:n1      =   1.7598 
+ + 4:a       =  14.9810n  5:n2      =  11.4662n  5:n4      =   0.     
+ + 7:n1      =   1.8000   8:a       =  14.9810n  9:n2      =  11.4662n
+ + 9:n4      =   0.     
 
 
  ****  voltage sources
 
- subckt                        
- element  0:vdd      0:vin     
-  volts      1.8000     1.8000 
-  current  -22.4945p    0.     
-  power     40.4900p    0.     
+ subckt                          
+ element   0:vdd       0:vin     
+  volts       1.8000      1.8000 
+  current  -194.6656p     0.     
+  power     350.3981p     0.     
 
-     total voltage source power dissipation=   40.4900p       watts
+     total voltage source power dissipation=  350.3981p       watts
 
+
+
+ **** resistors
+
+ subckt    x1.x7       x1.x11    
+ element   5:r1        9:r1      
+  r value     1.0000k     1.0000k
+  v drop      0.          0.     
+  current     0.          0.     
+  power       0.          0.     
 
 
 
  **** mosfets
 
 
- subckt   x1         x1        
- element  1:mp1      1:mn1     
- model    0:p_18.1   0:n_18.1  
- region       Cutoff     Linear
-  id       -18.8937p   22.4940p
-  ibs      2.513e-27 -6.706e-27
-  ibd      315.3024a -1.637e-24
-  vgs        0.         1.8000 
-  vds       -1.8000    11.4662n
-  vbs        0.         0.     
-  vth     -526.2515m  521.0897m
-  vdsat    -56.7904m  503.6529m
-  vod      526.2515m    1.2789 
-  beta       1.8419m    1.5935m
-  gam eff  557.0847m  507.4459m
-  gm       489.6271p   10.9730p
-  gds        6.8980p    1.9779m
-  gmb      177.0900p    3.0078p
-  cdtot      3.0756f    3.2030f
-  cgtot      3.5059f    2.1591f
-  cstot      4.2355f    3.0196f
-  cbtot      6.5125f    2.9281f
-  cgs        1.0761f    1.0217f
-  cgd        1.0761f    1.0229f
+ subckt    x1.x4       x1.x4       x1.x4       x1.x4       x1.x5     
+ element   2:mp1       2:mp2       2:mn3       2:mn4       3:mp1     
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:p_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Linear
+  id          6.1233p     4.4850p     4.0226p     4.0226p   -15.5707p
+  ibs         7.0430a   315.3024a  -1.199e-27  -1.199e-27   1.891e-27
+  ibd       7.486e-28     7.0430a  -2.927e-25  -2.927e-25   2.206e-24
+  vgs        40.2070m     1.8000      1.8000      1.8000     -1.8000 
+  vds        40.2070m     1.7598      2.0505n     2.0505n   -12.6049n
+  vbs        40.2070m     1.8000      0.          0.          0.     
+  vth      -537.8657m  -537.7255m   521.0897m   521.0897m  -538.1311m
+  vdsat     -56.8066m   -56.7868m   503.6529m   503.6529m  -945.8924m
+  vod       578.0728m     2.3377      1.2789      1.2789     -1.2619 
+  beta        1.8285m     1.8288m     1.5935m     1.5935m     1.4190m
+  gam eff   557.0847m   556.7942m   507.4459m   507.4459m   557.0847m
+  gm        157.3145p   117.0808p     1.9623p     1.9623p     6.8597p
+  gds        79.5796p     1.6453p     1.9779m     1.9779m     1.2374m
+  gmb        58.3712p    42.1791p   537.8688f   537.8688f     3.7358p
+  cdtot       4.2355f     4.1735f     3.2030f     3.2030f     9.1351f
+  cgtot       3.5059f     3.5059f     2.1591f     2.1591f     6.7233f
+  cstot       4.1735f     3.0756f     3.0196f     3.0196f     8.8362f
+  cbtot       7.6104f     6.4505f     2.9281f     2.9281f     7.6802f
+  cgs         1.0761f     1.0761f     1.0217f     1.0217f     3.4117f
+  cgd         1.0761f     1.0761f     1.0229f     1.0229f     3.2824f
+
+
+
+ subckt    x1.x5       x1.x6       x1.x6       x1.x6       x1.x6     
+ element   3:mn1       4:mp1       4:mn1       4:mp2       4:mn2     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Cutoff
+  id         11.9703p   349.5011f     3.9498p     5.4462p     1.8461p
+  ibs      -4.105e-27   315.3024a  -1.177e-27   6.741e-24  -1.087e-27
+  ibd      -257.9760a   2.610e-28  -2.146e-24   6.614e-28  -257.9760a
+  vgs         2.0505n     1.8000      1.8000     -1.8000     14.9810n
+  vds         1.8000      1.8000     14.9810n    38.4879n     1.8000 
+  vbs         0.          1.8000      0.         38.4879n     0.     
+  vth       457.2301m  -491.3457m   383.4522m  -491.3457m   372.5174m
+  vdsat      53.7463m   -39.8198m     1.1133     -1.1296     37.5397m
+  vod      -457.2301m     2.2913      1.4165     -1.3087   -372.5174m
+  beta        2.0133m   154.3902u   188.2633u   113.0048u   215.7246u
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        394.1517p    10.2508p     1.8640p     3.0324p    67.9937p
+  gds         9.3199p    12.5292f   263.9441u   141.5309u   556.5694f
+  gmb        55.2274p     3.8110p   740.3896f     1.8616p    16.0568p
+  cdtot       1.2443f     4.2355f    14.7735f    36.7264f     1.2443f
+  cgtot       1.1392f    11.2799f    11.6421f    33.6960f     3.4157f
+  cstot       1.6973f     3.0756f    12.6919f    40.3683f     1.6973f
+  cbtot       2.5276f    14.2863f     5.2126f    15.7635f     4.8040f
+  cgs       388.3114a     1.0761f     5.7528f    16.4510f   388.3897a
+  cgd       388.3000a     1.0764f     5.6344f    17.2097f   388.3000a
+
+
+
+ subckt    x1.x8       x1.x8       x1.x9       x1.x9       x1.x9     
+ element   6:mp1       6:mn1       7:mp1       7:mp2       7:mn3     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region        Cutoff      Linear      Linear      Linear      Cutoff
+  id        -18.8937p    22.4940p    31.1416p    31.1417p    11.9703p
+  ibs       2.513e-27  -6.706e-27   4.412e-24   8.828e-24  -4.105e-27
+  ibd       315.3024a  -1.637e-24   3.782e-27   4.420e-24  -257.9760a
+  vgs         0.          1.8000     -1.8000     -1.8000     11.4662n
+  vds        -1.8000     11.4662n    25.2100n    25.2100n     1.8000 
+  vbs         0.          0.         25.2100n    50.4200n     0.     
+  vth      -526.2515m   521.0897m  -538.1311m  -538.1311m   457.2301m
+  vdsat     -56.7904m   503.6529m  -945.8924m  -945.8924m    53.7463m
+  vod       526.2515m     1.2789     -1.2619     -1.2619   -457.2301m
+  beta        1.8419m     1.5935m     1.4190m     1.4190m     2.0133m
+  gam eff   557.0847m   507.4459m   557.0847m   557.0847m   507.4459m
+  gm        489.6271p    10.9730p    13.7195p    13.7196p   394.1518p
+  gds         6.8980p     1.9779m     1.2374m     1.2374m     9.3199p
+  gmb       177.0900p     3.0078p     7.4716p     7.4716p    55.2274p
+  cdtot       3.0756f     3.2030f     8.8362f     8.8362f     1.2443f
+  cgtot       3.5059f     2.1591f     6.7233f     6.7233f     1.1392f
+  cstot       4.2355f     3.0196f     9.1351f     9.1351f     1.6973f
+  cbtot       6.5125f     2.9281f     7.6802f     7.6802f     2.5276f
+  cgs         1.0761f     1.0217f     3.2824f     3.2824f   388.3114a
+  cgd         1.0761f     1.0229f     3.4117f     3.4117f   388.3000a
+
+
+
+ subckt    x1.x9       x1.x10      x1.x10      x1.x10      x1.x10    
+ element   7:mn4       8:mp1       8:mn1       8:mp2       8:mn2     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Cutoff
+  id         11.9703p   349.5015f     3.9498p     5.4460p     1.8461p
+  ibs      -4.105e-27   315.3024a  -1.177e-27   6.741e-24  -1.087e-27
+  ibd      -257.9760a   2.610e-28  -2.146e-24   6.613e-28  -257.9760a
+  vgs        11.4662n     1.8000      1.8000     -1.8000     14.9810n
+  vds         1.8000      1.8000     14.9810n    38.4870n     1.8000 
+  vbs         0.          1.8000      0.         38.4870n     0.     
+  vth       457.2301m  -491.3457m   383.4522m  -491.3457m   372.5174m
+  vdsat      53.7463m   -39.8198m     1.1133     -1.1296     37.5397m
+  vod      -457.2301m     2.2913      1.4165     -1.3087   -372.5174m
+  beta        2.0133m   154.3902u   188.2633u   113.0048u   215.7246u
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        394.1518p    10.2508p     1.8640p     3.0323p    67.9937p
+  gds         9.3199p    12.5292f   263.9441u   141.5309u   556.5694f
+  gmb        55.2274p     3.8110p   740.3897f     1.8616p    16.0568p
+  cdtot       1.2443f     4.2355f    14.7735f    36.7264f     1.2443f
+  cgtot       1.1392f    11.2799f    11.6421f    33.6960f     3.4157f
+  cstot       1.6973f     3.0756f    12.6919f    40.3683f     1.6973f
+  cbtot       2.5276f    14.2863f     5.2126f    15.7635f     4.8040f
+  cgs       388.3114a     1.0761f     5.7528f    16.4510f   388.3897a
+  cgd       388.3000a     1.0764f     5.6344f    17.2097f   388.3000a
+
+
+
+ subckt    x1.x12      x1.x12      x1.x7.x2    x1.x7.x2    x1.x7.x3  
+ element  10:mp1      10:mn1      11:mp1      11:mn1      12:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region        Cutoff      Linear      Cutoff      Linear      Linear
+  id        -18.8937p    22.4941p   -18.8937p    22.4941p   -15.5702p
+  ibs       2.513e-27  -6.706e-27   2.513e-27  -6.706e-27   1.891e-27
+  ibd       315.3024a  -1.637e-24   315.3024a  -1.637e-24   2.206e-24
+  vgs       -38.4879n     1.8000    -38.4879n     1.8000     -1.8000 
+  vds        -1.8000     11.4662n    -1.8000     11.4662n   -12.6045n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -526.2515m   521.0897m  -526.2515m   521.0897m  -538.1311m
+  vdsat     -56.7904m   503.6529m   -56.7904m   503.6529m  -945.8924m
+  vod       526.2515m     1.2789    526.2515m     1.2789     -1.2619 
+  beta        1.8419m     1.5935m     1.8419m     1.5935m     1.4190m
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm        489.6276p    10.9730p   489.6276p    10.9730p     6.8595p
+  gds         6.8980p     1.9779m     6.8980p     1.9779m     1.2374m
+  gmb       177.0902p     3.0078p   177.0902p     3.0078p     3.7357p
+  cdtot       3.0756f     3.2030f     3.0756f     3.2030f     9.1351f
+  cgtot       3.5059f     2.1591f     3.5059f     2.1591f     6.7233f
+  cstot       4.2355f     3.0196f     4.2355f     3.0196f     8.8362f
+  cbtot       6.5125f     2.9281f     6.5125f     2.9281f     7.6802f
+  cgs         1.0761f     1.0217f     1.0761f     1.0217f     3.4117f
+  cgd         1.0761f     1.0229f     1.0761f     1.0229f     3.2824f
+
+
+
+ subckt    x1.x7.x3    x1.x11.x2   x1.x11.x2   x1.x11.x3   x1.x11.x3 
+ element  12:mn1      13:mp1      13:mn1      14:mp1      14:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region        Cutoff      Cutoff      Linear      Linear      Cutoff
+  id         11.9703p   -18.8937p    22.4941p   -15.5700p    11.9703p
+  ibs      -4.105e-27   2.513e-27  -6.706e-27   1.891e-27  -4.105e-27
+  ibd      -257.9760a   315.3024a  -1.637e-24   2.206e-24  -257.9760a
+  vgs        11.4662n   -38.4870n     1.8000     -1.8000     11.4662n
+  vds         1.8000     -1.8000     11.4662n   -12.6044n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       457.2301m  -526.2515m   521.0897m  -538.1311m   457.2301m
+  vdsat      53.7463m   -56.7904m   503.6529m  -945.8924m    53.7463m
+  vod      -457.2301m   526.2515m     1.2789     -1.2619   -457.2301m
+  beta        2.0133m     1.8419m     1.5935m     1.4190m     2.0133m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        394.1518p   489.6276p    10.9730p     6.8594p   394.1518p
+  gds         9.3199p     6.8980p     1.9779m     1.2374m     9.3199p
+  gmb        55.2275p   177.0902p     3.0078p     3.7356p    55.2275p
+  cdtot       1.2443f     3.0756f     3.2030f     9.1351f     1.2443f
+  cgtot       1.1392f     3.5059f     2.1591f     6.7233f     1.1392f
+  cstot       1.6973f     4.2355f     3.0196f     8.8362f     1.6973f
+  cbtot       2.5276f     6.5125f     2.9281f     7.6802f     2.5276f
+  cgs       388.3114a     1.0761f     1.0217f     3.4117f   388.3114a
+  cgd       388.3000a     1.0761f     1.0229f     3.2824f   388.3000a
 
 
 
@@ -327,12 +491,12 @@
 
 
   ******  Circuit Statistics  ******
-  # nodes       =       8 # elements   =       4
-  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # nodes       =      80 # elements   =      36
+  # resistors   =       2 # capacitors =       2 # inductors   =       0
   # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
   # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
   # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
-  # jfets       =       0 # mosfets    =       2 # U elements  =       0
+  # jfets       =       0 # mosfets    =      30 # U elements  =       0
   # T elements  =       0 # W elements =       0 # B elements  =       0
   # S elements  =       0 # P elements =       0 # va device   =       0
   # vector_srcs =       0
@@ -341,19 +505,19 @@
   ******  Runtime Statistics (seconds)  ******
 
   analysis           time    # points   tot. iter  conv.iter
-  op point           0.06           1           7
-  transient          0.04     1250001         905         381 rev=        12
-  readin             0.04
-  errchk             0.02
+  op point           0.09           1          23
+  transient          0.21     1250001        1935         725 rev=         6
+  readin             0.07
+  errchk             0.03
   setup              0.05
   output             0.00
 
 
-           total memory used          192  kbytes
-           total cpu time            0.22 seconds
-           total elapsed time        0.30 seconds
-           job started at     13:36:53 07/08/2022
-           job ended   at     13:36:53 07/08/2022
+           total memory used          516  kbytes
+           total cpu time            0.50 seconds
+           total elapsed time        0.56 seconds
+           job started at     13:41:15 07/13/2022
+           job ended   at     13:41:15 07/13/2022
 
 
   lic: Release hspice token(s) 

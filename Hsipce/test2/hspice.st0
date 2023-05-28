@@ -1,0 +1,36 @@
+***** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******
+ Input File: d:\project\hsipce\test2\hspice.sp
+ lic:
+ lic: FLEXlm: v10.8
+ lic: USER:   askev                HOSTNAME: NEKO
+ lic: HOSTID: "50ebf6939771 a0e70baeb177 a0e70baeb178 a2e70baeb177" PID:      54
+ lic: Using FLEXlm license file:
+ lic: 27000@localhost
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 31-dec-2028/2008.120
+ lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost
+ lic:
+ init: begin read circuit files,  cpu clock=  9.50E-02
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\behave\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\AD\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\XILINX\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\TLINE\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\TI\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\SIGNET\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\PCI\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\LIN_TECH\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\FET\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\DIO\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\COMLINE\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\BURR_BRN\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\BJT\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\behave\
+       option search   = C:\synopsys\Hspice_E-2010.12\PARTS\AD\
+       option post     =     2.00
+       option runlvl
+       option post     =     2.00
+       option probe
+ init: end read circuit files,  cpu clock=  1.30E-01 memory=    154 kb
+ init: begin check errors,  cpu clock=  1.30E-01
+>error          ***** hspice job aborted
+ lic: Release hspice token(s)

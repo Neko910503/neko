@@ -1,0 +1,32 @@
+* "simulator" "HSPICE" 
+* "version" "E-2010.12 32-BIT"
+* "format" "HSP"
+* "rundate" "13:41:15 07/13/2022 "
+* "netlist" "d:\project\hsipce\hw1\hspice.sp "
+* "runtitle" "***hw1***"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ vdd =   1.8000        
++ vin =   1.8000        
++ vn =   1.8000        
++ vp =   1.8000        
++ x1.n1 =   2.0505n       
++ x1.n2 =   1.8000        
++ x1.n3 =   1.8000        
++ x1.n4 =  11.4662n       
++ x1.n5 =   1.8000        
++ x1.n6 =   1.8000        
++ x1.n7 =  11.4662n       
++ x1.x4.n1 =   1.7598        
++ x1.x6.a =  14.9810n       
++ x1.x7.n2 =  11.4662n       
++ x1.x7.n4 =   0.            
++ x1.x9.n1 =   1.8000        
++ x1.x10.a =  14.9810n       
++ x1.x11.n2 =  11.4662n       
++ x1.x11.n4 =   0.            
+***   END: Saved Operating Point ***                     

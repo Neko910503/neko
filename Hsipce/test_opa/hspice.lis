@@ -5,13 +5,13 @@
   terms and conditions of the license agreement from Synopsys.
   Use of this program is your acceptance to be bound by the
   license agreement. HSPICE is the trademark of Synopsys, Inc.
-  Input File: d:\project\hsipce\test\hspice.sp                                  
-  Command line options: -i d:\project\hsipce\test\hspice.sp -o d:\project\hsipce\test\hspice.lis
+  Input File: d:\project\hsipce\hw1-analog\hspice.sp                            
+  Command line options: -i d:\project\hsipce\hw1-analog\hspice.sp -o d:\project\hsipce\hw1-analog\hspice.lis
   lic:  
   lic: FLEXlm: v10.8 
   lic: USER:   askev                HOSTNAME: NEKO 
   lic: HOSTID: "50ebf6939771 a0e70baeb177 a0e70baeb178 a2e70baeb177" PID:      1
- 0
+ 7
   lic: Using FLEXlm license file: 
   lic: 27000@localhost 
   lic: Checkout 1 hspice 
@@ -19,18 +19,21 @@
   lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost 
   lic:   
  Init: read install configuration file: C:\synopsys\Hspice_E-2010.12\meta.cfg
-  **warning** (d:\project\hsipce\test\hspice.sp:7) Global net name, "gnd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
 1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
  ******  
- ***hw1***
+ ***hw1-analog***
 
   ******  circuit name directory
  circuit number to circuit name directory
    number circuitname                     definition         multiplier
         0 main circuit
-        1 x1.                             inv                1.00 
-  **warning** (d:\project\hsipce\test\hspice.sp:15) Both nodes of element vgnd are connected together; Line ignored.
-  **info** (d:\project\hsipce\test\hspice.sp:17) DC voltage reset to initial transient source value              in source        0:vin                 new dc=  0.1800D+01
+        1 x1.                             opa                1.00 
+
+ **warning** It is recommended that you set start explicitly:
+             .TRAN tstep tstop START=val
+
+
+  **warning** (d:\project\hsipce\hw1-analog\hspice.sp:28) Both nodes of element vss are connected together; Line ignored.
  ***************************************************************************
  ***        model parameters  model name:   0:p_18.1   model type:pmos   ***
  ***************************************************************************
@@ -248,64 +251,105 @@
 
  
       
+ **info** set option symb=1 internally to help for convergence.
  *****************************************************************
  ******  option summary
  ******
  runlvl  = 3         bypass  = 2         
   Opening plot unit= 79
- file=d:\project\hsipce\test\hspice.pa0                                        
+ file=d:\project\hsipce\hw1-analog\hspice.pa0                                  
 
 1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
  ******  
- ***hw1***
+ ***hw1-analog***
 
   ******  operating point information tnom=  25.000 temp=  25.000 *****
  ***** operating point status is all       simulation time is     0.     
     node    =voltage      node    =voltage      node    =voltage
 
- +0:vdd     =   1.8000  0:vin     =   1.8000  0:vout    =  11.4662n
+ +0:vb      = 550.0000m 0:vdd     =   1.8000  0:vinn    = 900.0000m
+ +0:vinp    = 900.0000m 0:vout    = 757.7162m 1:n0      =   1.1099 
+ +1:n1      = 653.2236m 1:n2      = 653.2236m 1:n3      =   1.6008 
+ +1:n4      = 653.2236m
 
 
  ****  voltage sources
 
- subckt                        
- element  0:vdd      0:vin     
-  volts      1.8000     1.8000 
-  current  -22.4945p    0.     
-  power     40.4900p    0.     
+ subckt                                              
+ element  0:vdd      0:vinp     0:vinn     0:vb      
+  volts      1.8000   900.0000m  900.0000m  550.0000m
+  current -464.6447u    0.         0.         0.     
+  power    836.3605u    0.         0.         0.     
 
-     total voltage source power dissipation=   40.4900p       watts
+     total voltage source power dissipation=  836.3605u       watts
 
+
+
+ **** resistors
+
+ subckt   x1        
+ element  1:rc      
+  r value  850.0000 
+  v drop     0.     
+  current    0.     
+  power      0.     
 
 
 
  **** mosfets
 
 
- subckt   x1         x1        
- element  1:mp1      1:mn1     
- model    0:p_18.1   0:n_18.1  
- region       Cutoff     Linear
-  id       -18.8937p   22.4940p
-  ibs      2.513e-27 -6.706e-27
-  ibd      315.3024a -1.637e-24
-  vgs        0.         1.8000 
-  vds       -1.8000    11.4662n
-  vbs        0.         0.     
-  vth     -526.2515m  521.0897m
-  vdsat    -56.7904m  503.6529m
-  vod      526.2515m    1.2789 
-  beta       1.8419m    1.5935m
-  gam eff  557.0847m  507.4459m
-  gm       489.6271p   10.9730p
-  gds        6.8980p    1.9779m
-  gmb      177.0900p    3.0078p
-  cdtot      3.0756f    3.2030f
-  cgtot      3.5059f    2.1591f
-  cstot      4.2355f    3.0196f
-  cbtot      6.5125f    2.9281f
-  cgs        1.0761f    1.0217f
-  cgd        1.0761f    1.0229f
+ subckt   x1         x1         x1         x1         x1         x1        
+ element  1:mp1      1:mp2      1:mp3      1:mp4      1:mp5      1:mn1     
+ model    0:p_18.1   0:p_18.1   0:p_18.1   0:p_18.1   0:p_18.1   0:n_18.1  
+ region     Saturati   Saturati   Saturati   Saturati   Saturati   Saturati
+  id      -128.2362u -128.2362u -256.4724u -174.4446u  -33.7276u  128.2362u
+  ibs      463.9081a  463.9081a  2.522e-20  1.739e-20  4.096e-21 -2.852e-20
+  ibd        2.6703f    2.6703f  235.4097a    2.0986f  120.8707a -558.7128a
+  vgs     -700.7787m -700.7787m -690.0509m -690.0509m -690.0509m  653.2236m
+  vds     -947.5551m -947.5551m -199.2213m   -1.0423  -690.0509m  653.2236m
+  vbs      199.2213m  199.2213m    0.         0.         0.         0.     
+  vth     -566.3504m -566.3504m -520.4437m -511.5493m -533.5840m  478.6206m
+  vdsat   -165.3152m -165.3152m -215.0536m -197.5646m -206.5578m  180.4349m
+  vod     -134.4284m -134.4284m -169.6072m -178.5016m -156.4669m  174.6030m
+  beta      10.1578m   10.1578m   15.7414m    8.8579m    1.7680m    7.3774m
+  gam eff  555.7015m  555.7015m  557.0845m  557.0846m  557.0845m  507.4468m
+  gm         1.4319m    1.4319m    2.0356m    1.5930m  310.9009u    1.1666m
+  gds       13.4761u   13.4761u  452.4520u   16.5145u   11.6701u   28.6469u
+  gmb      392.5060u  392.5060u  612.6256u  476.1495u   93.5084u  205.9379u
+  cdtot     52.6360f   52.6360f   33.9424f   45.6497f    3.5506f   11.1148f
+  cgtot    128.4699f  128.4699f   48.1567f  110.9425f    5.6637f   22.4669f
+  cstot    160.2662f  160.2662f   66.4268f  143.3664f    8.1050f   29.1934f
+  cbtot    108.0261f  108.0261f   58.6191f   98.9367f    6.8645f   22.1541f
+  cgs      103.6860f  103.6860f   35.6987f   89.3518f    4.2335f   17.8161f
+  cgd       17.6558f   17.6558f    9.7146f   15.0718f    1.0611f    2.8997f
+
+
+
+ subckt   x1         x1         x1        
+ element  1:mn2      1:mn3      1:mn4     
+ model    0:n_18.1   0:n_18.1   0:n_18.1  
+ region     Saturati   Saturati   Saturati
+  id       128.2362u  174.4446u   33.7276u
+  ibs     -2.852e-20 -3.439e-20 -6.650e-21
+  ibd     -558.7128a -861.8223a -315.6185a
+  vgs      653.2236m  653.2236m  550.0000m
+  vds      653.2236m  757.7162m    1.1099 
+  vbs        0.         0.         0.     
+  vth      478.6206m  444.2782m  488.2269m
+  vdsat    180.4349m  200.3424m  116.3561m
+  vod      174.6030m  208.9454m   61.7731m
+  beta       7.3774m    7.7620m    5.9987m
+  gam eff  507.4468m  507.4468m  507.4466m
+  gm         1.1666m    1.4098m  477.6337u
+  gds       28.6469u   24.7576u   17.5187u
+  gmb      205.9379u  263.8688u   69.5614u
+  cdtot     11.1148f   16.1487f    3.8253f
+  cgtot     22.4669f   44.0553f    5.3138f
+  cstot     29.1934f   54.0429f    7.6832f
+  cbtot     22.1541f   35.0452f    7.1974f
+  cgs       17.8161f   36.4716f    3.6913f
+  cgd        2.8997f    4.3312f    1.0920f
 
 
 
@@ -314,7 +358,7 @@
           ***** job concluded
 1****** HSPICE -- E-2010.12 32-BIT (Nov 20 2010) winnt ******                   
  ******  
- ***hw1***
+ ***hw1-analog***
 
   ******  job statistics summary tnom=  25.000 temp=  25.000 *****
 
@@ -327,12 +371,12 @@
 
 
   ******  Circuit Statistics  ******
-  # nodes       =       8 # elements   =       4
-  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # nodes       =      29 # elements   =      16
+  # resistors   =       1 # capacitors =       2 # inductors   =       0
   # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
-  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       4
   # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
-  # jfets       =       0 # mosfets    =       2 # U elements  =       0
+  # jfets       =       0 # mosfets    =       9 # U elements  =       0
   # T elements  =       0 # W elements =       0 # B elements  =       0
   # S elements  =       0 # P elements =       0 # va device   =       0
   # vector_srcs =       0
@@ -341,19 +385,20 @@
   ******  Runtime Statistics (seconds)  ******
 
   analysis           time    # points   tot. iter  conv.iter
-  op point           0.06           1           7
-  transient          0.04     1250001         905         381 rev=        12
-  readin             0.04
+  op point           0.07           1          14
+  ac analysis        0.04          91          91
+  transient          0.03         101          48          24 rev=         0
+  readin             0.05
   errchk             0.02
-  setup              0.05
+  setup              0.06
   output             0.00
 
 
-           total memory used          192  kbytes
-           total cpu time            0.22 seconds
-           total elapsed time        0.30 seconds
-           job started at     13:36:53 07/08/2022
-           job ended   at     13:36:53 07/08/2022
+           total memory used          341  kbytes
+           total cpu time            0.30 seconds
+           total elapsed time        0.37 seconds
+           job started at     09:14:18 07/16/2022
+           job ended   at     09:14:19 07/16/2022
 
 
   lic: Release hspice token(s) 
