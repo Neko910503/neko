@@ -26,7 +26,7 @@ async def mochi(ctx):
     await ctx.channel.send(file=discord.File('random_image.jpg'))
     
 # 替換成你的 Discord Bot Token
-client_token = 'MTE0MzgxMzk1NTE5NDczMjU4OA.GMjV-Q.aKZrCWP7ovYNZP_7a8fvFBclR8d6jsAqca9xXI'
+client_token = 'client_token'
 bot.run(client_token)
 
 # 儲存圖片 URL 的列表
