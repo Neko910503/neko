@@ -7,28 +7,6 @@ from discord.ext import commands
 intents = discord.Intents.default()
 intents.message_content = True
 
-# 設定指令前綴
-bot = commands.Bot(command_prefix="/", intents=intents)
-
-@bot.event
-async def on_ready():
-    print('Logged in as', bot.user)
-
-@bot.command()
-async def mochi(ctx):
-    # 從圖片 URL 列表中隨機選擇一個 URL
-    random_image_url = random.choice(image_urls)
-    print(random_image_url)
-    # 下載圖片並上傳到 Discord
-    image_response = requests.get(random_image_url)
-    with open('random_image.jpg', 'wb') as f:
-        f.write(image_response.content)
-    await ctx.channel.send(file=discord.File('random_image.jpg'))
-    
-# 替換成你的 Discord Bot Token
-client_token = 'client_token'
-bot.run(client_token)
-
 # 儲存圖片 URL 的列表
 image_urls = [
     "https://lh3.googleusercontent.com/pw/AIL4fc8GgDM4e33i3xjWN3PuodssEFaAs9rvwBWf8MUzQ9BAgyIWxdE2R16G3gmKloLyVwcD3PBAyHvbUMYJy-EYR54dKB04bHTClfZMGwMI18M2yaVgHk26EbGJzFv1v72R_bRzjhrl1Z66Rdd4nwM8UxnVnA=w548-h975-s-no?authuser=0",
@@ -760,3 +738,25 @@ image_urls = [
     "https://lh3.googleusercontent.com/pw/AIL4fc95CSrxXAGffVuR_pkqyt9_8a9Ms-f1cnT0FuPXcbIG43G255i-O-BblXBXmQ0saOM3BlAN_E-TqG1v94r_kkjt8DN2TuExjGWfggERQbPGTQnCgkHAeRNxOLVx2B6U1WUBjxiegCaV6VLqcQojHmqv9g=w1280-h720-s-no"
     # 添加更多圖片 URL
 ]
+
+# 設定指令前綴
+bot = commands.Bot(command_prefix="/", intents=intents)
+
+@bot.event
+async def on_ready():
+    print('Logged in as', bot.user)
+
+@bot.command()
+async def mochi(ctx):
+    # 從圖片 URL 列表中隨機選擇一個 URL
+    random_image_url = random.choice(image_urls)
+    print(random_image_url)
+    # 下載圖片並上傳到 Discord
+    image_response = requests.get(random_image_url)
+    with open('random_image.jpg', 'wb') as f:
+        f.write(image_response.content)
+    await ctx.channel.send(file=discord.File('random_image.jpg'))
+    
+# 替換成你的 Discord Bot Token
+client_token = 'client_token'
+bot.run(client_token)
